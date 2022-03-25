@@ -8,9 +8,9 @@
 <body>
 	<a-scene>
 		<a-lamina geometry="" material="shader:lamina;color:white;lighting:basic;" position="-1 0.5 -3" rotation="0 45 0">
-			<!-- <a-entity lamina-color="color:red;mode:screen;"></a-entity> -->
+			<a-entity lamina-color="color:red;mode:screen;"></a-entity>
 			<a-entity lamina-normal="mode:multiply;alpha:0.5;"></a-entity>
-			<a-entity lamina-depth="mode:multiply;mapping:camera;near:0.5;far:1;"></a-entity>
+			<a-entity lamina-depth="mode:multiply;mapping:vector;near:0.5;far:2;origin:0 0 1;"></a-entity>
 		</a-lamina>
 		<a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
 		<a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>

@@ -1,8 +1,8 @@
 {
-  "name": "aframe-curves",
+  "name": "aframe-lamina",
   "version": "1.0.0",
   "description": "Components for dealing with spline curves",
-  "repository": "https://github.com/AdaRoseCannon/aframe-curves",
+  "repository": "https://github.com/AdaRoseCannon/aframe-lamina",
   "scripts": {
     "docs": "awk '\n BEGIN {p=1}\n /^<!--DOCS-->/ {print;system(\"node ./aframe-to-md.mjs ./build/aframe-lamina.js\");p=0}\n /^<!--DOCS_END-->/ {p=1}\n p' README.md > ~README.md && mv ~README.md README.md",
     "build": "rollup -c && find build -maxdepth 2 -iname \"*.js\" -not -type d -exec du -h {} \\;;npm run docs",
