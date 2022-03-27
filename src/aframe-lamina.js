@@ -47,6 +47,17 @@ AFRAME.registerShader('lamina', {
 	}
 });
 
+AFRAME.registerPrimitive('a-lamina', {
+	mappings: {
+		color: "material.color",
+		alpha: "material.alpha",
+		lighting: "material.lighting",
+	},
+	defaultComponents: {
+		material: "shader:lamina;"
+	}
+});
+
 const defaultSchema = {
 	mode: {
 		default: 'normal',
@@ -140,14 +151,3 @@ for (const [name, schemapart] of Object.entries(schemas)) {
 		}
 	})
 }
-
-AFRAME.registerPrimitive('a-lamina', {
-	mappings: {
-		color: "material.color",
-		alpha: "material.alpha",
-		lighting: "material.lighting",
-	},
-	defaultComponents: {
-		material: "shader:lamina;"
-	}
-})

@@ -3155,6 +3155,17 @@ float lamina_normalize(float v) { return lamina_map(v, -1.0, 1.0, 0.0, 1.0); }
   	}
   });
 
+  AFRAME.registerPrimitive('a-lamina', {
+  	mappings: {
+  		color: "material.color",
+  		alpha: "material.alpha",
+  		lighting: "material.lighting",
+  	},
+  	defaultComponents: {
+  		material: "shader:lamina;"
+  	}
+  });
+
   const defaultSchema = {
   	mode: {
   		default: 'normal',
@@ -3248,17 +3259,6 @@ float lamina_normalize(float v) { return lamina_map(v, -1.0, 1.0, 0.0, 1.0); }
   		}
   	});
   }
-
-  AFRAME.registerPrimitive('a-lamina', {
-  	mappings: {
-  		color: "material.color",
-  		alpha: "material.alpha",
-  		lighting: "material.lighting",
-  	},
-  	defaultComponents: {
-  		material: "shader:lamina;"
-  	}
-  });
 
 })(THREE);
 //# sourceMappingURL=aframe-lamina.js.map

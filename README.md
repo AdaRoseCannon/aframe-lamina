@@ -20,6 +20,22 @@ Automated port of Lamina to AFrame
 | alpha    | number   | Alpha                                                                         | 1       |
 | lighting | string   | Shading model to use.. One of phong, physical, toon, basic, lambert, standard | "basic" |
 
+### &lt;a-lamina&gt;
+
+**Default Components:**
+
+| Default component | Settings         |
+| :---------------- | :--------------- |
+| material          | "shader:lamina;" |
+
+**Entity Attribute Mappings:**
+
+| Property | Mapping             |
+| :------- | :------------------ |
+| color    | "material.color"    |
+| alpha    | "material.alpha"    |
+| lighting | "material.lighting" |
+
 ### lamina-color component
 
 | Property | Type    | Description                                                                                                      | Default  |
@@ -303,21 +319,5 @@ Automated port of Lamina to AFrame
 | offset   | "lamina-displace.offset"   |
 | type     | "lamina-displace.type"     |
 | mapping  | "lamina-displace.mapping"  |
-
-### &lt;a-lamina&gt;
-
-**Default Components:**
-
-| Default component | Settings         |
-| :---------------- | :--------------- |
-| material          | "shader:lamina;" |
-
-**Entity Attribute Mappings:**
-
-| Property | Mapping             |
-| :------- | :------------------ |
-| color    | "material.color"    |
-| alpha    | "material.alpha"    |
-| lighting | "material.lighting" |
 
 <!--DOCS_END-->
