@@ -4,6 +4,7 @@
 
 import { LayerMaterial } from 'lamina/vanilla';
 import * as lamina from 'lamina/vanilla';
+const kebabize = (str) => str.replace(/[A-Z]+(?![a-z])|[A-Z]/g, ($, ofs) => (ofs ? "-" : "") + $.toLowerCase())
 
 AFRAME.registerShader('lamina', {
 	schema: {
@@ -125,6 +126,17 @@ for (const [name, schemapart] of Object.entries(schemas)) {
 			this.el.laminaLayer = layer;
 		},
 		update(oldData) {
+		}
+	})
+	
+	const mappings = {};
+	for (const propName of Object.keys(schema)) {
+		mappings[kebabize(propName)] = `${'lamina-' + name.toLowerCase()}.${propName}`
+	}
+	AFRAME.registerPrimitive('lamina-' + name.toLowerCase(), {
+		mappings,
+		defaultComponents: {
+			['lamina-' + name.toLowerCase()]: ""
 		}
 	})
 }

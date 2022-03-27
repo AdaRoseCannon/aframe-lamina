@@ -3112,6 +3112,7 @@ float lamina_normalize(float v) { return lamina_map(v, -1.0, 1.0, 0.0, 1.0); }
   });
 
   /* jshint esversion: 9 */
+  const kebabize = (str) => str.replace(/[A-Z]+(?![a-z])|[A-Z]/g, ($, ofs) => (ofs ? "-" : "") + $.toLowerCase());
 
   AFRAME.registerShader('lamina', {
   	schema: {
@@ -3233,6 +3234,17 @@ float lamina_normalize(float v) { return lamina_map(v, -1.0, 1.0, 0.0, 1.0); }
   			this.el.laminaLayer = layer;
   		},
   		update(oldData) {
+  		}
+  	});
+  	
+  	const mappings = {};
+  	for (const propName of Object.keys(schema)) {
+  		mappings[kebabize(propName)] = `${'lamina-' + name.toLowerCase()}.${propName}`;
+  	}
+  	AFRAME.registerPrimitive('lamina-' + name.toLowerCase(), {
+  		mappings,
+  		defaultComponents: {
+  			['lamina-' + name.toLowerCase()]: ""
   		}
   	});
   }
