@@ -5,7 +5,7 @@
 import { LayerMaterial } from 'lamina/vanilla';
 import * as lamina from 'lamina/vanilla';
 const kebabize = (str) => str.replace(/[A-Z]+(?![a-z])|[A-Z]/g, ($, ofs) => (ofs ? "-" : "") + $.toLowerCase())
-
+// const textureLoader = new THREE.TextureLoader();
 AFRAME.registerShader('lamina', {
 	schema: {
 		layers: {
@@ -33,7 +33,7 @@ AFRAME.registerShader('lamina', {
 		this.rendererSystem = this.el.sceneEl.systems.renderer;
 		this.material = new LayerMaterial({
 			color: new THREE.Color(data.color).convertSRGBToLinear(),
-			layers: Array.from(layers.children).map(el => el.laminaLayer),
+			layers: Array.from(layers.children).map(el => el.laminaLayer).filter(l => !!l),
 			lighting: data.lighting
 		});
 	},
@@ -126,10 +126,17 @@ for (const [name, schemapart] of Object.entries(schemas)) {
 		schema,
 		init() {
 			const config = {};
+			const self = this;
 			for (const [prop, value] of Object.entries(this.data)) {
 				let parsedVal = value;
 				if (schema[prop].type === 'color') {
 					parsedVal = new THREE.Color(value).convertSRGBToLinear();
+				}
+				if (schema[prop].type === 'map') {
+					this.el.sceneEl.systems.material.loadTexture(value, { src: value }, function textureLoaded (texture) {
+						self.el.laminaLayer[prop] = texture;
+						AFRAME.utils.material.handleTextureEvents(self.el, texture);
+					});
 				}
 				config[prop] = parsedVal;
 			}
