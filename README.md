@@ -3,12 +3,15 @@
 Automated port of Lamina to AFrame
 
 ```html
-<a-lamina geometry="" material="shader:lamina;color:white;lighting:basic;" position="-1 0.5 -3" rotation="0 45 0">
-	<a-entity lamina-color="color:red;mode:screen;"></a-entity>
-	<a-entity lamina-normal="mode:multiply;alpha:0.5;"></a-entity>
-	<a-entity lamina-depth="mode:multiply;mapping:vector;near:0.5;far:2;origin:0 0 1;"></a-entity>
+<a-lamina geometry="" material="shader:lamina;color:white;lighting:phong;" position="-1 0.5 -3" rotation="0 45 0">
+	<lamina-color color="hotpink" mode="screen"></lamina-color>
+	<lamina-normal mode="multiply" alpha="0.5"></lamina-normal>
+	<lamina-depth mode="multiply" mapping="camera"></lamina-depth>
 </a-lamina>
 ```
+
+![image](https://user-images.githubusercontent.com/4225330/160399333-5c01f828-31b7-4496-a887-9ad4a7ec7ab3.png)
+
 
 <!--DOCS-->
 ### lamina component
