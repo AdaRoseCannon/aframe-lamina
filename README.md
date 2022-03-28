@@ -8,6 +8,16 @@ Automated port of Lamina to AFrame
 	<lamina-normal mode="multiply" alpha="0.5"></lamina-normal>
 	<lamina-depth mode="multiply" mapping="camera"></lamina-depth>
 </a-lamina>
+<a-sphere position="0 1.25 -5" radius="1.25" material="shader:lamina;lighting:phong;">
+	<lamina-displace></lamina-displace>
+	<lamina-texture map="#wave"></lamina-texture>
+	<lamina-gradient mode="screen" color-a="hotpink" color-b="skyblue"></lamina-gradient>
+	<lamina-fresnel mode="add"></lamina-fresnel>
+</a-sphere>
+<a-cylinder material="shader:lamina;lighting:standard;" position="1 0.75 -3" radius="0.5" height="1.5">
+	<lamina-gradient color-a="green" color-b="yellow"></lamina-gradient>
+	<lamina-matcap map="#wave" mode="screen"></lamina-matcap>
+</a-cylinder>
 ```
 
 ![image](https://user-images.githubusercontent.com/4225330/160399333-5c01f828-31b7-4496-a887-9ad4a7ec7ab3.png)
